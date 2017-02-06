@@ -3,7 +3,7 @@ var express = require('express')
 var session = require('express-session')
 var MongoStore = require('connect-mongo')(session)
 var flash = require('connect-flash')
-var config = reuqire('config-lite')
+var config = require('config-lite')
 var routes = require('./routes')
 var pkg = require('./package')
 
@@ -31,3 +31,11 @@ app.use(session({
 
 // flash 中间件，用来显示通知
 app.use(flash())
+
+// 路由
+routes(app)
+
+// 监听端口，启动程序
+app.listen(config.port, function () {
+	console.log('${pak.name} listening on port ${config.port}')
+})
