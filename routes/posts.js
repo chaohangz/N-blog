@@ -18,6 +18,11 @@ router.get('/', function(req, res, next) {
     .catch(next)
 })
 
+// GET /posts/create 发表文章页
+router.get('/create', checkLogin, function(req, res, next) {
+  res.render('create')
+})
+
 // POST /posts 发表一篇文章
 router.post('/', checkLogin, function(req, res, next) {
 	var author = req.session.user._id
@@ -56,11 +61,6 @@ router.post('/', checkLogin, function(req, res, next) {
     })
     .catch(next)
 })
-
-// GET /posts/create 发表文章页
-router.get('/create', checkLogin, function(req, res, next) {
-	res.render('create')
-}
 
 // GET /posts/:postId 单独一篇文章页
 router.get('/:postId', function(req, res, next) {
