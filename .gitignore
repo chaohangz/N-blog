@@ -1,5 +1,6 @@
 config/*
-!cnfig/default.*
+# 忽略config/default
+!config/default.*
 npm-debug.log
 node_modules
 coverage
